@@ -1,2 +1,13 @@
 ---
-# tasks file for ansible-lamp
+- name: install apache server
+  apt:
+          name: apache2
+          state: installed
+  when: ansible_os_family== "Ubuntu"
+ 
+- name: install web server
+  yum:
+          name: httpd
+          state: installed
+  when: ansible_os_family== "CentOS"
+
