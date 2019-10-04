@@ -2,12 +2,10 @@
 - name: install apache server
   apt:
           name: apache2
-          state: installed
-  when: ansible_os_family== "Ubuntu"
+          state: present
+- name: start and enaled apache at boot
+  service:
+          name: apache2
+          state: started
+          enabled: yes
  
-- name: install web server
-  yum:
-          name: httpd
-          state: installed
-  when: ansible_os_family== "CentOS"
-

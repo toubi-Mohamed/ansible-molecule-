@@ -6,10 +6,15 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: CentOs
-    image: centos:7
   - name: ubuntu
-    image: ubuntu:18.04
+    image: geerlingguy/docker-ubuntu1604-ansible:latest
+    command: ""
+    volumes:
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+     
+
 provisioner:
   name: ansible
   lint:
