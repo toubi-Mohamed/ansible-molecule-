@@ -15,7 +15,7 @@ pipeline {
         sh '''
           pip3 install virtualenv
           virtualenv virtenv
-          source virtenv/bin/activate
+          source /var/lib/jenkins/workspace/CI-ansible/virtenv/bin/activate
           pip install --upgrade ansible molecule docker
         '''
       }
@@ -24,7 +24,7 @@ pipeline {
     stage ('Display versions') {
       steps {
         sh '''
-          source virtenv/bin/activate
+          /var/lib/jenkins/workspace/CI-ansible/virtenv/bin/activate
           docker -v
           python -V
           ansible --version
