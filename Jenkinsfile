@@ -13,8 +13,6 @@ pipeline {
     stage ('Setup Python virtual environment') {
       steps {
         sh '''
-          export HTTP_PROXY=http://192.168.100.59::8080
-          export HTTPS_PROXY=http://192.168.100.59::8080
           pip3 install virtualenv
           virtualenv virtenv
           source virtenv/bin/activate
@@ -39,7 +37,7 @@ pipeline {
       steps {
         sh '''
           source virtenv/bin/activate
-          molecule test
+          molecule converge
         '''
       }
     }
