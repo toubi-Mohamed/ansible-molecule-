@@ -10,13 +10,15 @@ pipeline {
       }
     }
 
-    stage ('Setup Python virtual environment') {
+    stage ('Install Dependcies') {
       steps {
         sh '''
           pip3 install virtualenv
           virtualenv virtenv
-          source /var/lib/jenkins/workspace/CI-ansible/virtenv/bin/activate
-          pip install --upgrade ansible molecule docker
+          source virtenv/bin/activate
+          pip3 install molecule
+          pip3 install ansible 
+          pip3 install docker 
         '''
       }
     }
