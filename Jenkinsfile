@@ -15,7 +15,6 @@ pipeline {
         sh '''
           pip3 install virtualenv
           virtualenv virtenv
-          source CI-ansible/virtenv/bin/activate
           pip3 install molecule
           pip3 install ansible 
           pip3 install docker 
@@ -37,7 +36,6 @@ pipeline {
     stage ('Molecule test') {
       steps {
         sh '''
-          source virtenv/bin/activate
           molecule converge
         '''
       }
